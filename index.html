@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Book collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="scripts.js"></script>
+  </head>
+
+  <body>
+      <h1>Book collection</h1>
+      <div id= "mainDiv">
+          <div id="typeDiv">
+                  <label for="Title" >Title</label><br>
+                  <input type="text" id="Title"required autofocus><br><br>
+                  <label for="Author" >Author</label><br>
+                  <input type="text" id="Author" required><br><br>
+                  <label for="Description" >Description</label> <br>
+                  <textarea id="Description" class="resizedTextbox" required> </textarea><br><br>
+                  <button type="submit" id="Submit">Save New</button>                               
+                  <button id="deleteButton">Delete</button> 
+                  <button id="Save">Save</button>  
+
+                  <div id="hiddenValue">
+                      <input type="text" id="keyValue">
+                  </div>                           
+          </div>
+        <div id="Storage"></div> 
+      </div>  
+  </body>
+</html>

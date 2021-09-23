@@ -1,0 +1,35 @@
+.StorageBox {
+    border: 1px solid black;
+    padding: 15px;
+    font-size: 17px; 
+}
+
+p:hover {
+    color: red;
+}
+
+#hiddenValue{
+    display: none;
+}
+
+/* Make description bigger*/
+.resizedTextbox {
+    height: 50px;
+    width: 200px;
+}
+
+#mainDiv {
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: row; 
+    padding-left: 20px;
+}
+
+#Storage{
+    margin: 0 auto;
+}
+
+h1{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
