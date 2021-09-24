@@ -1,6 +1,6 @@
 //Load text into localStorage
 if(window.localStorage.length === 0){
-    var myBooks = [
+    let myBooks = [
         {
             "title":"Harry Potter ja viisasten kivi", "author":"J. K. Rowling", "description": "Harry Potter kirjasarjan ensimmäinen osa."
         },
@@ -11,7 +11,7 @@ if(window.localStorage.length === 0){
             "title":"Kalastuksen käsikirja", "author":"Jyrki Jahnukainen", "description":"Kalastuksen opaskirja"
         },
         {
-            "title":"Siirtymä", "author":"Rachel Cusk", "description":"Hienovarainen ihmissuhderomaani."
+            "title":"Siirtymä", "author":"Rachel Cusk", "description":"Hienovartainen ihmissuhderomaani."
         },
         {
             "title":"Pienen hauen pyydystys", "author":"Juhani Karila", "description":"Vuoden 2019 kotimainen romaani."
@@ -26,18 +26,18 @@ if(window.localStorage.length === 0){
             "title":"Ylpeys ja ennakkoluulo", "author":"Jane Austen", "description":"Vuoden 2019 klassikko"
         }  
     ]
-    for (var i = 0; i < myBooks.length; i++) { 
-        var key = i;
+    for (let i = 0; i < myBooks.length; i++) { 
+        let key = i;
         localStorage.setItem(key, JSON.stringify(myBooks[i]));
     }
 }
 
 //Saves books into the localStorage
 function store(){ 
-    var key = localStorage.length++;
-    var title = document.getElementById('Title').value;
-    var author = document.getElementById('Author').value;
-    var description = document.getElementById('Description').value; 
+    let key = localStorage.length++;
+    let title = document.getElementById('Title').value;
+    let author = document.getElementById('Author').value;
+    let description = document.getElementById('Description').value; 
     
     const book = {
         title: title,
@@ -56,14 +56,14 @@ function store(){
 
 //Bring books from localStorage into library field
 document.addEventListener("DOMContentLoaded", function(){
-    for (var a in window.localStorage) {
+    for (let a in window.localStorage) {
         if(window.localStorage.hasOwnProperty(a)){
 
-            var records = window.localStorage[a]; //Searches for the key in localStorage
-            var recordsObj = JSON.parse(records);
-            var formatedTxt = "Title: "+recordsObj.title + " Author: "+recordsObj.author; //Make the dictionarys text
-            var Storage = document.getElementById('Storage');
-            var para = document.createElement("P"); // Create a <p> element
+            let records = window.localStorage[a]; //Searches for the key in localStorage
+            let recordsObj = JSON.parse(records);
+            let formatedTxt = "Title: "+recordsObj.title + " Author: "+recordsObj.author; //Make the dictionarys text
+            let Storage = document.getElementById('Storage');
+            let para = document.createElement("P"); // Create a <p> element
             para.innerText = formatedTxt;
             para.setAttribute("id", a);
             recordsObj.a = a;
@@ -74,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 event.preventDefault();
           });
 
-            var element = document.getElementById("Storage");
-            var paragraph = document.createElement("p"); //Make space between two books in text box
+            let element = document.getElementById("Storage");
+            let paragraph = document.createElement("p"); //Make space between two books in text box
             element.appendChild(paragraph);
             element.setAttribute("class", "StorageBox"); //Makes class the whole box
         }
@@ -86,10 +86,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //Load data from the storage to the text box
 function loadToTextfield(recordsObj){
-    var title = document.getElementById('Title');
-    var author = document.getElementById('Author');
-    var description = document.getElementById('Description');
-    var key = document.getElementById('keyValue');
+    let title = document.getElementById('Title');
+    let author = document.getElementById('Author');
+    let description = document.getElementById('Description');
+    let key = document.getElementById('keyValue');
     title.value = recordsObj.title;
     author.value = recordsObj.author;
     description.value = recordsObj.description;
@@ -98,10 +98,10 @@ function loadToTextfield(recordsObj){
 
 //Save changed data into localStorage
 function saveChanged(recordsObj){
-    var key = document.getElementById('keyValue').value;
-    var title = document.getElementById('Title').value;
-    var author = document.getElementById('Author').value;
-    var description = document.getElementById('Description').value;
+    let key = document.getElementById('keyValue').value;
+    let title = document.getElementById('Title').value;
+    let author = document.getElementById('Author').value;
+    let description = document.getElementById('Description').value;
 
     const book = {
         title: title,
@@ -119,7 +119,7 @@ function saveChanged(recordsObj){
 
 //Remove item from localStorage and libarary field
 function removeItem(){
-    var key = document.getElementById('keyValue').value; //gets key from user
+    let key = document.getElementById('keyValue').value; //gets key from user
     localStorage.removeItem(key) //passes key to the removeItem method
     location.reload();
 }
