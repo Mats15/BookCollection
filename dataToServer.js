@@ -1,83 +1,10 @@
-<!DOCTYPE html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Book collection</title>
-    <link rel="stylesheet" href="/styles.css">
-    <style>
-      .StorageBox {
-    border: 1px solid black;
-    padding: 15px;
-    font-size: 17px; 
-}
-
-p:hover {
-    color: red;
-}
-
-#hiddenValue{
-    display: none;
-}
-
-/* Make description bigger*/
-.resizedTextbox {
-    height: 50px;
-    width: 200px;
-}
-
-#mainDiv {
-    margin: 0 auto;
-    display: flex; 
-    flex-direction: row; 
-    padding-left: 20px;
-}
-
-#Storage{
-    margin: 0 auto;
-}
-
-h1{
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-    </style>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="dataToServer.js"></script>
-  </head>
-
-  <body>
-      <h1>Book collection</h1>
-      <div id= "mainDiv">
-          <div id="typeDiv">
-                  <label for="Title" >Title</label><br>
-                  <input type="text" id="Title"required autofocus><br><br>
-                  <label for="Author" >Author</label><br>
-                  <input type="text" id="Author" required><br><br>
-                  <label for="Description" >Description</label> <br>
-                  <textarea id="Description" class="resizedTextbox" required> </textarea><br><br>
-                  <button onclick="newItem()" id="Submit">Save New</button>                               
-                  <button onclick="deleteItem()" id="deleteButton">Delete</button> 
-                  <button onclick="saveItem()" id="Save">Save</button>  
-
-                  <div id="hiddenValue">
-                      <input type="text" id="keyValue">
-                  </div>                           
-          </div>
-        <div id="Storage"></div> 
-       <!-- <textarea id="bookStore" class="resizedTextbox"> </textarea> -->
-        
-      </div> 
-  </body>
-
-<script>
+var url = "http://localhost:3000/listBooks";
     
-    var url = "http://localhost:3000/listBooks";
     function newItem(){
         let test1 = document.getElementById('Title').value
         console.log(test1)
-        //ottaa arvot talteen objektiin
         let body4 = ({
-              body : JSON.stringify({ //tekee string objektin bodyn sisälle
+              body : JSON.stringify({
                 title : document.getElementById('Title').value,
                 author : document.getElementById('Author').value,
                 description : document.getElementById('Description').value,
@@ -86,17 +13,18 @@ h1{
               })
             })
             console.log("button clicked");
-            var httpRequest = new XMLHttpRequest()//tekee post request
+            var httpRequest = new XMLHttpRequest()
             httpRequest.open('POST', url)
             httpRequest.setRequestHeader('Content-Type', 'application/json')
-            httpRequest.send(JSON.stringify(body4))//lähettää body4 datan newItem functioon app.js
+            httpRequest.send(JSON.stringify(body4))
             httpRequest.onreadystatechange = function () {
+
             if(httpRequest.readyState == 4 && httpRequest.status == 200) {
             alert(httpRequest.responseText);
             }
           }
-          location.reload();
       }
+
       function saveItem(){
         let test1 = document.getElementById('Title').value
         console.log(test1)
@@ -120,7 +48,6 @@ h1{
             alert(httpRequest.responseText);
             }
           }
-          location.reload();
       }
 
       function deleteItem(){
@@ -146,7 +73,6 @@ h1{
             alert(httpRequest.responseText);
             }
           }
-          location.reload();
       }
 
 var getJSON = function(url, callback) {
@@ -170,8 +96,9 @@ function loadjsontobox(){
           if (err !== null) {
             alert('Something went wrong: ' + err);
           } else {
-            
+            let formatedstring ;
             for(var k in data.books) {
+              formatedstring += data.books[k].title;
                 //alert(data.books[k].id);
                 //------------------------------------------------------------
                     let formatedTxt = "Title: "+data.books[k].title + " Author: "+data.books[k].author; //Make the dictionarys text
@@ -200,6 +127,8 @@ function loadjsontobox(){
               //end of for loop
             //let formattedData = JSON.parse(data);
             //formattedData.forEach(function(obj) { console.log(obj.id); });
+            
+            document.getElementById('bookStore').value=formatedstring;
             //alert('Your query count: ' + data.book1.id);
           }
         });
@@ -215,6 +144,3 @@ function loadToTextfield(recordsObj){
     description.value = recordsObj.description;
     key.value = recordsObj.id;
 }
-</script>
-
-</html>

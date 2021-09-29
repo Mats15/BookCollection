@@ -1,15 +1,52 @@
 {
-    "books": [{
-    "id": "0",
-    "title": "Astrophysics for People in a Hurry",
-    "authors": [ "Neil Degrasse Tyson" ],
-    "description": "WW Norton"
-    
-  }, {
-    "id": "1",
-    "title": "The Hidden Life of Trees",
-    "authors": [ "Peter Wohlleben", "Tim Flannery" ],
-    "description": "Greystone Books"
-    
-  }]
+	"books": [
+		{
+			"id": 1632903644251,
+			"title": " Rautasusi",
+			"author": "Siri Pettersen",
+			"description": "Rautasusi on vangitseva pohjoinen mysteeri verestä, halusta ja riippuvuudesta. Se aloittaa itsenäisen Vardari-trilogian, joka sijoittuu samaan fantasiauniversumiin kuin palkintoja ja kansainvälistä ylistystä kahminut Korpinkehät-sarja."
+		},
+		{
+			"id": 1632903676596,
+			"title": "Talo taivaansinisellä merellä",
+			"author": "TJ Klune",
+			"description": "Lumoava fantasia oman paikkansa löytämisestä sekä ennakkoluuloista ja niiden murenemisesta. Linus Baker on säntillinen sosiaalityöntekijä, joka elää yksinäistä elämää kissansa ja rakkaiden vinyylilevyjensä kanssa. Kun Linus saa salaiseksi luokitellun työnannon ja matkaa Marsyasin saaren salaperäiseen orpokotiin, hän joutuu kuitenkin kyseenalaistamaan kaiken oppimansa."
+		},
+		{
+			"id": 1632903719229,
+			"title": "Kirke",
+			"author": "Madeline Miller",
+			"description": "Kirken tarina omin sanoin kerrottuna – tulossa HBO:n sarjana. Kirke, auringonjumalan tytär, ei ole kotonaan jumalten maailmassa. Hän siirtyy ihmisten pariin ja vasta siellä löytää todelliset voimansa. Madeline Millerin uudelleenkerronta Odysseian tarinasta ei koskaan vääristele suuren seikkailun tapahtumia, vaan tuo näkyviin yksityiskohtia, joita ei ole aikaisemmin huomattu."
+		},
+		{
+			"id": 1632903752173,
+			"title": "Katariinanpyörä",
+			"author": "Johanna Valkama",
+			"description": "Historiallisen viihteen tähti aloittaa uuden sarjan, jossa seurataan nuorta leskeä nuijasodan jälkeisissä kuohuissa. Verinen nuijasota on ohi, mutta teilatun kapinapäällikön Jaakko Ilkan leski Susanna Katariina on yhä vaarassa, sillä Kyrön kirkonkylän väki syyttää Ilkan perikuntaa kapinan epäonnistumisesta."
+		},
+		{
+			"id": 1632903799207,
+			"title": "Puuvillatehtaan varjossa",
+			"author": "Ann-Christin Antell",
+			"description": " Historiallista romantiikkaa ja viihdyttäviä juonenkäänteitä 1800-luvun Turussa. Puuvillatehtaan varjossa aloittaa Puuvillatehdas-sarjan. Se kuvaa itsenäisen leskirouvan elämää aikana, jona säätyläisyhteiskunta natisee teollistumisen myötä liitoksissaan, työväenliike nousee ja naiset vaativat Canthin hengessä tasa-arvoa."
+		},
+		{
+			"id": 1632903835995,
+			"title": "Viimeiset miehet",
+			"author": "Christina Sweeney-Baird",
+			"description": " Otteessaan pitävä kirjallinen trilleri taudista, joka muuttaa kaiken​. Skotlannissa alkaa levitä tappava virus, joka tarttuu vain miehiin. Viruksen löytänyt naislääkäri leimataan vainoharhaiseksi, kunnes häntä vähätelleet miehet sairastuvat itse."
+		},
+		{
+			"id": 1632903858103,
+			"title": "Pimeitten vetten paholainen",
+			"author": "Stuart Turton",
+			"description": " Sherlock Holmes kohtaa Pirates of the Caribbeanin pirullisen yllättävässä dekkarissa. Vuonna 1634 valtamerilaiva Saardam lähtee matkalle Itä-Intiasta kohti Amsterdamia. Aluksella matkaa myös tunnettu mestarietsivä Sammy Pipps, joka on kuitenkin suljettu laivan vankityrmään. Merellä selittämättömät tapahtumat alkavat seurata toisiaan: yössä loistaa outoja valoja, laivaan lastattu karja kuolee kuin salamaniskusta ja yksi matkustajista löydetään murhattuna lukitusta huoneesta."
+		},
+		{
+			"id": 1632903894513,
+			"title": "Pimeys",
+			"author": "Ragnar Jónasson",
+			"description": " Hulda Hermannsdóttirin pitkä ura Reykjavikin poliisissa on päättymässä ennenaikaiseen eläkkeeseen, kun nuoremmat työntävät hänet tieltään. Huldalla on edessään viimeinen tapaus, kadonnut nuori nainen, jonka kohtalosta kukaan ei välitä. Mitä lähemmäs Hulda pääsee totuutta, sitä vaikeammaksi tutkinta käy, ikään kuin kollegatkin haluaisivat estää häntä tekemästä työtään."
+		}
+	]
 }
