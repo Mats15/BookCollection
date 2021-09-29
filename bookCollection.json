@@ -1,12 +1,6 @@
 {
 	"books": [
 		{
-			"id": 1632903644251,
-			"title": " Rautasusi",
-			"author": "Siri Pettersen",
-			"description": "Rautasusi on vangitseva pohjoinen mysteeri verestä, halusta ja riippuvuudesta. Se aloittaa itsenäisen Vardari-trilogian, joka sijoittuu samaan fantasiauniversumiin kuin palkintoja ja kansainvälistä ylistystä kahminut Korpinkehät-sarja."
-		},
-		{
 			"id": 1632903676596,
 			"title": "Talo taivaansinisellä merellä",
 			"author": "TJ Klune",
