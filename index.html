@@ -65,58 +65,80 @@
         <div id="Storage"></div> 
       </div> 
   </body>
-
-<script>
-  var url = "http://localhost:3000/listBooks";
-  function newItem(){
-    let test1 = document.getElementById('Title').value
-    let title = document.getElementById('Title').value
-    let author = document.getElementById('Author').value
-    let description = document.getElementById('Description').value
-    //Save value to object
-    let body4 = ({
-      body : JSON.stringify({ //Make string object inside body.
-        title : document.getElementById('Title').value,
-        author : document.getElementById('Author').value,
-        description : document.getElementById('Description').value,
-        bookId : document.getElementById('keyValue').value,
-        tag : "new",
+  <script>
+    let url = "http://localhost:3000/listBooks";
+    function newItem(){
+      let test1 = document.getElementById('Title').value
+      let title = document.getElementById('Title').value
+      let author = document.getElementById('Author').value
+      let description = document.getElementById('Description').value
+      //Save value to object
+      let body4 = ({
+        body : JSON.stringify({ //Make string object inside body.
+          title : document.getElementById('Title').value,
+          author : document.getElementById('Author').value,
+          description : document.getElementById('Description').value,
+          bookId : document.getElementById('keyValue').value,
+          tag : "new",
+        })
       })
-    })
-    if( title === '' || author === '' || description === '') {
-        alert("Use Save New button to add a new book or fill all fields.");
-    }
-    else {
-      var httpRequest = new XMLHttpRequest()//Make post request
-      httpRequest.open('POST', url)
-      httpRequest.setRequestHeader('Content-Type', 'application/json')
-      httpRequest.send(JSON.stringify(body4))//Send body4 data to newItem function in app.js.
-      httpRequest.onreadystatechange = function () {
-        if(httpRequest.readyState == 4 && httpRequest.status == 200) {
-          alert(httpRequest.responseText); 
-        }   
+      if( title === '' || author === '' || description === '') {
+          alert("Use Save New button to add a new book or fill all fields.");
       }
+      else {
+        let httpRequest = new XMLHttpRequest()//Make post request
+        httpRequest.open('POST', url)
+        httpRequest.setRequestHeader('Content-Type', 'application/json')
+        httpRequest.send(JSON.stringify(body4))//Send body4 data to newItem function in app.js.
+        httpRequest.onreadystatechange = function () {
+          if(httpRequest.readyState == 4 && httpRequest.status == 200) {
+            alert(httpRequest.responseText); 
+          }   
+        }
+      }
+      location.reload();
     }
-    location.reload();
-  }
-  function saveItem(){
-    let test1 = document.getElementById('Title').value
-    let title = document.getElementById('Title').value
-    let author = document.getElementById('Author').value
-    let description = document.getElementById('Description').value
-    let body4 = ({
-      body : JSON.stringify({
-        title : document.getElementById('Title').value,
-        author : document.getElementById('Author').value,
-        description : document.getElementById('Description').value,
-        bookId : document.getElementById('keyValue').value,
-        tag : "save",
+    function saveItem(){
+      let test1 = document.getElementById('Title').value
+      let title = document.getElementById('Title').value
+      let author = document.getElementById('Author').value
+      let description = document.getElementById('Description').value
+      let body4 = ({
+        body : JSON.stringify({
+          title : document.getElementById('Title').value,
+          author : document.getElementById('Author').value,
+          description : document.getElementById('Description').value,
+          bookId : document.getElementById('keyValue').value,
+          tag : "save",
+        })
       })
-    })
-    if( title === '' || author === '' || description === '') {
-        alert("Use Save New button to add a new book or fill all fields.");
-    } else {
-      var httpRequest = new XMLHttpRequest()
+      if( title === '' || author === '' || description === '') {
+          alert("Use Save New button to add a new book or fill all fields.");
+      } else {
+        let httpRequest = new XMLHttpRequest()
+        httpRequest.open('POST', url)
+        httpRequest.setRequestHeader('Content-Type', 'application/json')
+        httpRequest.send(JSON.stringify(body4))
+        httpRequest.onreadystatechange = function () {
+          if(httpRequest.readyState == 4 && httpRequest.status == 200) {
+            alert(httpRequest.responseText);
+          }
+        }
+      }
+      location.reload();
+    }
+    function deleteItem(){
+      let test1 = document.getElementById('Title').value
+      let body4 = ({
+        body : JSON.stringify({
+          title : document.getElementById('Title').value,
+          author : document.getElementById('Author').value,
+          description : document.getElementById('Description').value,
+          bookId : document.getElementById('keyValue').value,
+          tag : "delete",
+        })
+      })
+      let httpRequest = new XMLHttpRequest()
       httpRequest.open('POST', url)
       httpRequest.setRequestHeader('Content-Type', 'application/json')
       httpRequest.send(JSON.stringify(body4))
@@ -125,88 +147,65 @@
           alert(httpRequest.responseText);
         }
       }
+      location.reload();
     }
-    location.reload();
-  }
-  function deleteItem(){
-    let test1 = document.getElementById('Title').value
-    let body4 = ({
-      body : JSON.stringify({
-        title : document.getElementById('Title').value,
-        author : document.getElementById('Author').value,
-        description : document.getElementById('Description').value,
-        bookId : document.getElementById('keyValue').value,
-        tag : "delete",
-      })
-    })
-    var httpRequest = new XMLHttpRequest()
-    httpRequest.open('POST', url)
-    httpRequest.setRequestHeader('Content-Type', 'application/json')
-    httpRequest.send(JSON.stringify(body4))
-    httpRequest.onreadystatechange = function () {
-      if(httpRequest.readyState == 4 && httpRequest.status == 200) {
-        alert(httpRequest.responseText);
-      }
+
+    let getJSON = function(url, callback) {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function() {
+        let status = xhr.status;
+        if (status === 200) {
+          callback(null, xhr.response);
+        } else {
+          callback(status, xhr.response);
+        }
+      };
+      xhr.send();
+    }; 
+
+    function loadjsontobox(){
+      getJSON(url,
+            function(err, data) {
+              if (err !== null) {
+                alert('Something went wrong: ' + err);
+              } else {
+                
+                for(let k in data.books) {
+                    //alert(data.books[k].id);
+                    //------------------------------------------------------------
+                        let formatedTxt = "Title: "+data.books[k].title + " Author: "+data.books[k].author; //Make the dictionarys text
+                        let Storage = document.getElementById('Storage');
+                        let para = document.createElement("P"); // Create a <p> element
+                        para.innerText = formatedTxt;
+                        para.setAttribute("id", data.books[k].id);
+                        para.recordsObj = data.books[k];
+                        Storage.append(para);
+                        para.addEventListener("click", function(event) {
+                            loadToTextfield(this.recordsObj);
+                            event.preventDefault();
+                        });
+                        let element = document.getElementById("Storage");
+                        let paragraph = document.createElement("p"); //Make space between two books in text box
+                        element.appendChild(paragraph);
+                        element.setAttribute("class", "StorageBox"); //Makes class the whole box              
+                    //------------------------------------------------------------
+                  }
+                  //end of for loop
+              }
+            });
     }
-    location.reload();
-  }
-
-  var getJSON = function(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status, xhr.response);
-      }
-    };
-    xhr.send();
-  }; 
-
-  function loadjsontobox(){
-    getJSON(url,
-          function(err, data) {
-            if (err !== null) {
-              alert('Something went wrong: ' + err);
-            } else {
-              
-              for(var k in data.books) {
-                  //alert(data.books[k].id);
-                  //------------------------------------------------------------
-                      let formatedTxt = "Title: "+data.books[k].title + " Author: "+data.books[k].author; //Make the dictionarys text
-                      let Storage = document.getElementById('Storage');
-                      let para = document.createElement("P"); // Create a <p> element
-                      para.innerText = formatedTxt;
-                      para.setAttribute("id", data.books[k].id);
-                      para.recordsObj = data.books[k];
-                      Storage.append(para);
-                      para.addEventListener("click", function(event) {
-                          loadToTextfield(this.recordsObj);
-                          event.preventDefault();
-                      });
-                      let element = document.getElementById("Storage");
-                      let paragraph = document.createElement("p"); //Make space between two books in text box
-                      element.appendChild(paragraph);
-                      element.setAttribute("class", "StorageBox"); //Makes class the whole box              
-                  //------------------------------------------------------------
-                }
-                //end of for loop
-            }
-          });
-  }
-  loadjsontobox();
-  function loadToTextfield(recordsObj){
-      let title = document.getElementById('Title');
-      let author = document.getElementById('Author');
-      let description = document.getElementById('Description');
-      let key = document.getElementById('keyValue');
-      title.value = recordsObj.title;
-      author.value = recordsObj.author;
-      description.value = recordsObj.description;
-      key.value = recordsObj.id;
-  }
-</script>
+    loadjsontobox();
+    function loadToTextfield(recordsObj){
+        let title = document.getElementById('Title');
+        let author = document.getElementById('Author');
+        let description = document.getElementById('Description');
+        let key = document.getElementById('keyValue');
+        title.value = recordsObj.title;
+        author.value = recordsObj.author;
+        description.value = recordsObj.description;
+        key.value = recordsObj.id;
+    }
+  </script> 
 </html>

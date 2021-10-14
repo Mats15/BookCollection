@@ -22,7 +22,7 @@ app.get("/listBooks", function (req, res) {
 });
 //Post data to json.
 app.post("/listBooks", function (req, res) {
-  var newFinalData;
+  let newFinalData;
   let reqdata = JSON.parse(req.body.body);
   if (reqdata.tag == "new") {
     fs.readFile(
